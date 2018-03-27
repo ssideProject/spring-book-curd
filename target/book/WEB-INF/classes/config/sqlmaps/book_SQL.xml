@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+    <select id="bookList" resultType="com.app.book.model.Book">
+        SELECT
+            id,
+            name,
+            writer,
+            price,
+            genre,
+            publisher,
+            cnt
+        FROM
+            BOOKS
+    </select>
+    
+    <select id="viewBook" resultType="com.app.book.model.Book">
+    	select id,name,writer,price,genre,publisher,cnt
+    	from BOOKS where id = #{id}
+    
+    </select>
+    
+    <insert id = "addBook">
+    	insert into BOOKS (id, name, writer, price, genre, publisher, CNT)
+    		values(#{id}, #{name}, #{writer}, #{price}, #{genre}, #{publisher}, BOOK_CNT.nextval)
+    		
+    </insert>
+    
+    <update id="updateBook">
+    	update BOOKS Set
+    		id= #{id},
+    		name =#{name},
+    		writer = #{writer},
+    		price= #{price},
+    		genre=#{genre},
+    		publisher=#{publisher},
+    		cnt = BOOK_CNT.nextval
+    	where id= #{id}
+    </update>
+    
+</mapper>
