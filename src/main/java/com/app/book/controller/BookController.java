@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.book.model.Book;
@@ -29,6 +31,18 @@ public class BookController {
         mav.setViewName("book/book");
         mav.addObject("books", list);
         return mav;
+	}
+	
+	@RequestMapping(value = "/Edit", method=RequestMethod.GET)
+	public String editBook(@RequestParam String id) {
+		
+		
+		return "";
+	}
+	
+	@RequestMapping(value = "/Edit", method=RequestMethod.POST)
+	public String editBook() {
+		return "";
 	}
 	
 	

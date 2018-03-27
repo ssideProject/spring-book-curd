@@ -4,13 +4,13 @@
 <mapper namespace="book">
     <select id="bookList" resultType="com.app.book.model.Book">
         SELECT
-            id,
-            name,
-            writer,
-            price,
-            genre,
-            publisher,
-            CNT
+            id AS id,
+            name AS name,
+            writer AS writer,
+            price AS price,
+            genre AS genre,
+            publisher AS publisher,
+            CNT AS cnt
         FROM
             BOOKS
         ORDER BY
