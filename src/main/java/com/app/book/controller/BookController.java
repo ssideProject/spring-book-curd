@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,17 +33,33 @@ public class BookController {
         mav.addObject("books", list);
         return mav;
 	}
-	
-	@RequestMapping(value = "/Edit", method=RequestMethod.GET)
-	public String editBook(@RequestParam String id) {
-		
-		
-		return "";
+	@RequestMapping("/view.do")
+	public String bookView(String id, Model model) {
+		model.addAttribute("book", bookService.viewBook(id));
+		return "book/viewBook";
 	}
 	
-	@RequestMapping(value = "/Edit", method=RequestMethod.POST)
-	public String editBook() {
-		return "";
+	@RequestMapping("/addBook.do")
+	public String addBook(Model model) {
+		return "book/addBook";
+	}
+	
+	@RequestMapping("/insert.do")
+	public String insertBook(@ModelAttribute Book book) {
+		bookService.addBook(book);
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/update.do")
+	public String updateBook(@ModelAttribute Book book) {
+		bookService.updateBook(book);
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/delete.do")
+	public String deleteBook(@RequestParam String id, Model model) {
+		bookService.deleteBook(id);
+		return "redirect:/";
 	}
 	
 	

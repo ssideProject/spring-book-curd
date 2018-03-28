@@ -20,13 +20,11 @@
     <select id="viewBook" resultType="com.app.book.model.Book">
     	select id,name,writer,price,genre,publisher,cnt
     	from BOOKS where id = #{id}
-    
     </select>
     
     <insert id = "addBook">
     	insert into BOOKS (id, name, writer, price, genre, publisher, CNT)
-    		values(#{id}, #{name}, #{writer}, #{price}, #{genre}, #{publisher}, BOOK_CNT.nextval)
-    		
+    		values(#{id}, #{name}, #{writer}, #{price}, #{genre}, #{publisher}, '1')
     </insert>
     
     <update id="updateBook">
@@ -36,9 +34,12 @@
     		writer = #{writer},
     		price= #{price},
     		genre=#{genre},
-    		publisher=#{publisher},
-    		cnt = BOOK_CNT.nextval
+    		publisher=#{publisher}
     	where id= #{id}
     </update>
+    
+    <delete id="deleteBook">
+    	delete from books where id = #{id}
+    </delete>
     
 </mapper>

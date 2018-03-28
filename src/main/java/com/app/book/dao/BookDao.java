@@ -8,8 +8,9 @@ import org.springframework.ui.Model;
 import com.app.book.model.Book;
 
 public interface BookDao {
-	int addBook(Book book);
+	void addBook(Book book);
 	Book viewBook(String id);
-	int updateBook(Book book);
+	void updateBook(Book book);
 	List<Book> bookList();
+	void deleteBook(String id);
 }

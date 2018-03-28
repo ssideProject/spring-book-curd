@@ -22,18 +22,24 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public int addBook(Book book) {
-		return sqlSession.insert("book.addBook", book);
+	public void addBook(Book book) {
+		sqlSession.insert("book.addBook", book);
 	}
 
 	@Override
-	public int updateBook(Book book) {
-		return sqlSession.update("book.updateBook", book);
+	public void updateBook(Book book) {
+		sqlSession.update("book.updateBook", book);
 	}
 
 	@Override
 	public Book viewBook(String id) {
 		return sqlSession.selectOne("book.viewBook",id);
+	}
+
+	@Override
+	public void deleteBook(String id) {
+		sqlSession.delete("book.deleteBook", id);
+		
 	}
 
 }

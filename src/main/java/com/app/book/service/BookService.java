@@ -9,7 +9,8 @@ import com.app.book.model.Book;
 
 public interface BookService {
 	List<Book> bookList();
-	int addBook(Book book);
-	Book viewBook(Book book);
-	int updateBook(Book book);
+	void addBook(Book book);
+	Book viewBook(String id);
+	void updateBook(Book book);
+	void deleteBook(String id);
 }

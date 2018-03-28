@@ -16,8 +16,8 @@
         <td width="100px">가격</td>
         <td width="100px">장르</td>
         <td width="200px">출판사</td>
-        <td width="200px">수량</td>
-        <td width="80px">버튼</td>
+        <td width="100px">수량</td>
+        <td width="auto">버튼</td>
     </tr>
 <c:forEach  var="book" items="${books}" >
     <tr>
@@ -28,10 +28,11 @@
         <td>${book.genre}</td>
         <td>${book.publisher}</td>
         <td>${book.cnt}</td>
+        <td>
+        <button type="button" onclick="location.href='${path }/book/view.do?id=${book.id}' ">상세</button></td>
     </tr>
 </c:forEach>
 </table>
-<button type="button" onclick="location.href='add' ">책 등록</button>
-
+<button type="button" onclick="location.href='addBook.do' ">책 등록</button>
 </body>
 </html>
